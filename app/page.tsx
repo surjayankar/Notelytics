@@ -10,6 +10,7 @@ import { Stats } from "fs";
 import StatsSection from "./components/landing/StatsSection";
 import MoreFeaturesSection from "./components/landing/MoreFeaturesSection";
 import CTASection from "./components/landing/CTASection";
+import Footer from "./components/landing/Footer";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <StatsSection/>
       <MoreFeaturesSection/>
       <CTASection/>
+      <Footer/>
     </div>
   );
 }
