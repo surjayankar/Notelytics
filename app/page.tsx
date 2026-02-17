@@ -1,4 +1,5 @@
 
+
 import Image from "next/image";
 import HeroSection from "./components/landing/HeroSection";
 import FeatureSection from "./components/landing/FeatureSection";
@@ -8,6 +9,7 @@ import HowItWorksSection from "./components/landing/HowItWorksSection";
 import { Stats } from "fs";
 import StatsSection from "./components/landing/StatsSection";
 import MoreFeaturesSection from "./components/landing/MoreFeaturesSection";
+import CTASection from "./components/landing/CTASection";
 
 export default function Home() {
   return (
@@ -18,6 +20,7 @@ export default function Home() {
       <HowItWorksSection/>
       <StatsSection/>
       <MoreFeaturesSection/>
+      <CTASection/>
     </div>
   );
 }
