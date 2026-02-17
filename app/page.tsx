@@ -5,6 +5,8 @@ import FeatureSection from "./components/landing/FeatureSection";
 import { Integration } from "svix/dist/api/integration";
 import IntegrationsSection from "./components/landing/IntegrationsSection";
 import HowItWorksSection from "./components/landing/HowItWorksSection";
+import { Stats } from "fs";
+import StatsSection from "./components/landing/StatsSection";
 
 export default function Home() {
   return (
@@ -13,6 +15,7 @@ export default function Home() {
       <FeatureSection/>
       <IntegrationsSection/>
       <HowItWorksSection/>
+      <StatsSection/>
     </div>
   );
 }
