@@ -3,7 +3,7 @@ function StatsSection() {
     return(
         <section className="py-20 bg-black">
             <div className="max-w-6xl mx-auto px-4">
-                <div className="grid md:grid-cols-4 gap-8 mb-20 pb-16 border-b border-gray-800/50">
+                <div className="grid md:grid-cols-4 gap-8 mb-20 pb-16">
                     <div className="text-center group">
                         <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-transparent bg-clip-text mb-2">
                             2+
