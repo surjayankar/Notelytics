@@ -22,6 +22,13 @@ model User {
   slackConnected       Boolean   @default(false)
   preferredChannelId   String?
   preferredChannelName String?
+  currentPlan          String    @default("free")
+  subscriptionStatus   String    @default("inactive")
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  billingPeriodStart   DateTime?
+  meetingsThisMonth    Int       @default(0)
+  chatMessagesToday    Int       @default(0)
   createdAt            DateTime  @default(now())
   updatedAt            DateTime  @updatedAt
   meetings             Meeting[]
