@@ -1,13 +1,14 @@
 import { useAuth } from "@clerk/nextjs"
 import { useEffect, useState } from "react"
 
-export interface CalendarEvent{
-    id:string
-    summary?:{
-        dateTime?:string
-        date?:string
+export interface CalendarEvent {
+    id: string
+    summary?: string
+    start?: {
+        dateTime?: string
+        date?: string
     }
-    attendees?: Array<{email:string}>
+    attendees?: Array<{ email: string }>
     location?: string
     hangoutLink?: string
     conferenceData?: any

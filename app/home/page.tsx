@@ -1,6 +1,9 @@
+'use client'
 import React from "react";
 import { useMeetings } from "./hooks/useMeetings";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import PastMeetings from "./components/PastMeetings";
+import UpcomingMeetings from "./components/UpcomingMeetings";
 function page(){
     const {
         userId,
@@ -40,12 +43,28 @@ function page(){
                             Past Meetings
                         </h2>
                     </div>
-                    {}
+                    <PastMeetings
+                        pastMeetings={pastMeetings}
+                        pastLoading={pastLoading}
+                        onMeetingClick={handleMeetingClick}
+                        getAttendeeList={getAttendeeList}
+                        getInitials={getInitials}
+                    />
                 </div>                    
                 <div className="w-px bg-border"></div>
                 <div className="w-96">
                     <div className="sticky top-6">
-                        {}
+                        <UpcomingMeetings
+                            upcomingEvents={upcomingEvents}
+                            connected={connected}
+                            error={error}
+                            loading={loading}
+                            initialLoading={initialLoading}
+                            botToggles={botToggles}
+                            onRefresh={fetchUpcomingEvents}
+                            onToggleBot={toggleBot}
+                            onConnectCalendar={directOAuth}
+                        />
                      </div>
                 </div>
 
