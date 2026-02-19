@@ -33,7 +33,7 @@ export async function GET() {
             summary: meeting.title,
             start: { dateTime: meeting.startTime.toISOString() },
             end: { dateTime: meeting.endTime.toISOString() },
-            attendees: meeting.attendees ? JSON.parse(meeting.attendees as string) : [],
+            attendees: (meeting.attendees as any[]) ?? [],
             hangoutLink: meeting.meetingUrl,
             conferenceData: meeting.meetingUrl ? { entryPoints: [{ uri: meeting.meetingUrl }] } : null,
             botScheduled: meeting.botScheduled,
