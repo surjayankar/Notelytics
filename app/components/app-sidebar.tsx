@@ -190,7 +190,7 @@ export function AppSidebar(){
                             </div>
                             {upgradeInfo.showButton &&(
                                 <Link href="/pricing">
-                                    <Button className="w-full rounded-md bg-sidebar-primary px-3 py-2 text-xs font-medium text-sidebar-primary-foreground transition-colors hover:bg-sidebar-primary/90">
+                                    <Button className="w-full rounded-md bg-sidebar-primary px-3 py-2 text-xs font-medium text-sidebar-primary-foreground transition-colors hover:bg-sidebar-primary/90 cursor-pointer">
                                         {upgradeInfo.title}
                                     </Button>
                                 </Link>

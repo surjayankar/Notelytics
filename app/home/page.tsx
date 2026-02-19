@@ -1,0 +1,57 @@
+import React from "react";
+import { useMeetings } from "./hooks/useMeetings";
+import { useRouter } from "next/router";
+function page(){
+    const {
+        userId,
+        upcomingEvents,
+        pastMeetings,
+        loading,
+        pastLoading,
+        connected,
+        error,
+        botToggles,
+        initialLoading,
+        fetchUpcomingEvents,
+        fetchPastMeetings,
+        toggleBot,
+        directOAuth,
+        getAttendeeList,
+        getInitials
+    }=useMeetings()
+
+    const router=useRouter()
+    const handleMeetingClick=(meetingId:string)=>{
+        router.push(`/meeting/${meetingId}`)
+    }
+    if(!userId){
+        return(
+            <div className="flex items-center justify-center h-screen">
+                Please sign in
+            </div>
+        )
+    }
+    return(
+        <div className="min-h-screen bg-background">
+            <div className="flex gap-6 p-6">
+                <div className="flex-1">
+                    <div className="mb-6">
+                        <h2 className="text-2xl font-bold text-foreground">
+                            Past Meetings
+                        </h2>
+                    </div>
+                    {}
+                </div>                    
+                <div className="w-px bg-border"></div>
+                <div className="w-96">
+                    <div className="sticky top-6">
+                        {}
+                     </div>
+                </div>
+
+            </div>
+
+        </div>
+    )
+}
+export default page
