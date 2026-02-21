@@ -4,7 +4,7 @@ import { useMeetings } from "./hooks/useMeetings";
 import { useRouter } from "next/navigation";
 import PastMeetings from "./components/PastMeetings";
 import UpcomingMeetings from "./components/UpcomingMeetings";
-function page(){
+function Home(){
     const {
         userId,
         upcomingEvents,
@@ -30,7 +30,7 @@ function page(){
     if(!userId){
         return(
             <div className="flex items-center justify-center h-screen">
-                Please sign in
+                Loading...
             </div>
         )
     }
@@ -73,4 +73,4 @@ function page(){
         </div>
     )
 }
-export default page
+export default Home
