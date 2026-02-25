@@ -1,3 +1,4 @@
+'use client'
 import { Button } from "@/components/ui/button"
 import { Pause, Play, SkipBack, SkipForward, Volume2 } from "lucide-react"
 import { useRef, useState } from "react"

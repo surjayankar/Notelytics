@@ -1,3 +1,4 @@
+'use client'
 import { useUsage } from "@/app/contexts/UsageContext"
 import { useState } from "react"
 

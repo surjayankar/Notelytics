@@ -1,6 +1,7 @@
+'use client'
 import { Button } from "@/components/ui/button"
 import { Check, Eye, Share2, Trash2 } from "lucide-react"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { toast } from "sonner"
 

@@ -1,3 +1,4 @@
+'use client'
 import { useChatCore } from "@/app/hooks/chat/useChatCore"
 import { useAuth } from "@clerk/nextjs"
 import { useParams } from "next/navigation"
