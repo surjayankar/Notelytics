@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { UsageProvider } from "./contexts/UsageContext";
 import { ConditionalLayout } from "./components/conditional-layout";
+import { Toaster } from "sonner"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,6 +46,7 @@ export default function RootLayout({
               </ConditionalLayout>
              
             </UsageProvider>
+            <Toaster richColors position="top-right" />
             
           </ThemeProvider>
       </body>
