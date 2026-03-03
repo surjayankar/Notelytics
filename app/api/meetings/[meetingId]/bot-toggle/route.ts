@@ -1,10 +1,10 @@
 import { prisma } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(
-    request: Request,
-    { params }: { params: { meetingId: string } }
+    request: NextRequest,
+  context: { params: Promise<{ meetingId: string }> }
 ) {
     try {
         const { userId } = await auth()
@@ -12,7 +12,7 @@ export async function POST(
             return NextResponse.json({ error: "not authed" }, { status: 401 })
         }
 
-        const { meetingId } = await params
+        const { meetingId } = await context.params
         const { botScheduled } = await request.json()
 
         const user = await prisma.user.findUnique({

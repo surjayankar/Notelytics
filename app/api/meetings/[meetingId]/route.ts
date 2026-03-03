@@ -5,11 +5,11 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
     request: NextRequest,
-    {params}:{params:Promise<{meetingId:string}>}
+  context: { params: Promise<{ meetingId: string }>}
 ){
     try{
         const {userId: clerkUserId}=await auth()
-        const {meetingId}=await params
+        const {meetingId}=await context.params
         const meeting=await prisma.meeting.findUnique({
             where:{
                 id: meetingId
@@ -40,41 +40,54 @@ export async function GET(
 }
 
 export async function DELETE(
-    request: NextRequest,
-    {params}:{params:{meetingId:string}}
-){
-    try{
-        const {userId}=await auth()
-        if(!userId){
-            return NextResponse.json({error:"Not authenticated"},{status:401})
-        }
-        const {meetingId}=params
-        const meeting=await prisma.meeting.findUnique({
-            where:{
-                id:meetingId
-            },
-            include:{
-                user:true
-            }
-        })
-        if(!meeting){
-            return NextResponse.json({error:"Meeting not found"},{status:404})
-        }
-        if(meeting.user.clerkId!==userId){
-            return NextResponse.json({error:"Not Authorized to delete this meeting"},{status:403})
-        }
-        await prisma.meeting.delete({
-            where:{
-                id:meetingId
-            }
-        })
-        return NextResponse.json({
-            success:true,
-            message:"Meeting deleted successfully"
-        })
-    }catch(error){
-        console.error("API error",error)
-        return NextResponse.json({error:"Failed to fetch meeting"},{status:500})
+  request: NextRequest,
+  context: { params: Promise<{ meetingId: string }> }
+) {
+  try {
+    const { userId } = await auth()
+
+    if (!userId) {
+      return NextResponse.json(
+        { error: "Not authenticated" },
+        { status: 401 }
+      )
     }
-    
+
+    const { meetingId } = await context.params
+
+    const meeting = await prisma.meeting.findUnique({
+      where: { id: meetingId },
+      include: { user: true }
+    })
+
+    if (!meeting) {
+      return NextResponse.json(
+        { error: "Meeting not found" },
+        { status: 404 }
+      )
+    }
+
+    if (meeting.user.clerkId !== userId) {
+      return NextResponse.json(
+        { error: "Not authorized to delete this meeting" },
+        { status: 403 }
+      )
+    }
+
+    await prisma.meeting.delete({
+      where: { id: meetingId }
+    })
+
+    return NextResponse.json({
+      success: true,
+      message: "Meeting deleted successfully"
+    })
+
+  } catch (error) {
+    console.error("API error", error)
+    return NextResponse.json(
+      { error: "Failed to delete meeting" },
+      { status: 500 }
+    )
+  }
 }
