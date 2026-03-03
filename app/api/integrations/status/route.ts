@@ -23,7 +23,7 @@ export async function GET() {
         ]
 
         const result: any[] = allPlatforms.map(platform => {
-            const integration = integrations.find(i => i.platform === platform.platform)
+            const integration = integrations.find((i: { platform: string }) => i.platform === platform.platform)
             return {
                 ...platform,
                 connected: !!integration,
