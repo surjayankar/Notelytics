@@ -28,7 +28,7 @@ export async function GET() {
             take: 10
         })
 
-        const events = upcomingMeetings.map(meeting => ({
+        const events = upcomingMeetings.map((meeting: typeof upcomingMeetings[0]) => ({
             id: meeting.calendarEventId || meeting.id,
             summary: meeting.title,
             start: { dateTime: meeting.startTime.toISOString() },
